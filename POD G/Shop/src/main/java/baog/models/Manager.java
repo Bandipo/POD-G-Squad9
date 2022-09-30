@@ -8,8 +8,9 @@ public class Manager {
     private UserDetails userDetails;
 
 
-    public Manager(String managerId) {
+    public Manager(String managerId, UserDetails userDetails) {
         this.managerId = managerId;
+        this.userDetails = userDetails;
     }
 
     public String getManagerId() {
