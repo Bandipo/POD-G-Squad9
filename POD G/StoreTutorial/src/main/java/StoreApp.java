@@ -1,26 +1,51 @@
 import enums.Gender;
-import models.CodeReview;
+import enums.Role;
+import models.Cashier;
 import models.Manager;
 import models.PersonDetails;
+import services.ManagerService;
+import services.impl.ManagerServiceImpl;
 
 import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class StoreApp {
-   static Executor executor = Executors.newFixedThreadPool(4);
+
+    private static   ManagerService managerService = new ManagerServiceImpl();
 
     public static void main(String[] args) {
-//        PersonDetails manager = new Manager("Janet", "Kalu", "08083830333", 30, Gender.FEMALE, UUID.randomUUID().toString());
 
 
-        CodeReview codeReview = new CodeReview(true, true);
+        String managerId = UUID.randomUUID().toString();
 
-//        System.out.println(codeReview.doCodeReview());
+        PersonDetails managerDetails = new PersonDetails("Janet",
+                "Kalu",
+                "0384038430",
+                25,
+                Gender.FEMALE,
+                Role.MANAGER);
+
+        Manager manager = new Manager(managerId, managerDetails);
 
 
-        executor.execute(()-> System.out.println(codeReview.doCodeReview()));
+        String cashierId = UUID.randomUUID().toString();
 
+        PersonDetails cashierDetails = new PersonDetails("Paul",
+                "Olawale",
+                "0384038430",
+                25,
+                Gender.MALE,
+                Role.CASHIER);
+
+        Cashier cashier = new Cashier(cashierId, cashierDetails);
+
+
+
+            String hiringCashierResult = managerService.hireCashier(null, cashier);
+
+
+        System.out.println(hiringCashierResult);
 
 
     }

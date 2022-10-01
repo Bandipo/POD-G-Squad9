@@ -1,34 +1,30 @@
 package models;
 
-import enums.Gender;
+public class Cashier {
 
-public class Manager {
-
-    private String managerId;
+    private String cashierId;
     private PersonDetails personDetails;
 
-    public Manager(String managerId, PersonDetails personDetails) {
-
-        this.managerId = managerId;
+    public Cashier(String cashierId, PersonDetails personDetails) {
+        this.cashierId = cashierId;
         this.personDetails = personDetails;
-
-
     }
 
-    public String getManagerId() {
-        return managerId;
+    public String getCashierId() {
+        return cashierId;
     }
-
 
     public PersonDetails getPersonDetails() {
         return personDetails;
     }
 
 
+
+
     @Override
     public String toString() {
-        return "Manager{" +
-                "managerId='" + managerId + '\'' +
+        return "Cashier{" +
+                "cashierId='" + cashierId + '\'' +
                 ", personDetails=" + personDetails +
                 '}';
     }
