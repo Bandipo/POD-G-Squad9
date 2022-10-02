@@ -11,6 +11,14 @@ public class StoreRepository {
     public static Set<Cashier> storeCashiers = new LinkedHashSet<>();
 
 
+    static {
+
+        for(ProductCategory productCategory: ProductCategory.values()){
+            storeProducts.put(productCategory, new LinkedList<>());
+        }
+
+    }
+
     public static Set<Cashier> getStoreCashiers() {
         return storeCashiers;
     }
