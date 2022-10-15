@@ -1,15 +1,13 @@
 package enums;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum ProductCategory {
-    JUICE("Juice"), BREAD("Bread");
+    JUICE, BREAD, MILK;
 
-    private final String name;
-
-    ProductCategory(String categoryName) {
-        this.name = categoryName;
-    }
-
-    public String getName() {
-        return name;
+    public static List<String> getExpectedCategories() {
+        return Arrays.stream(ProductCategory.values()).map(ProductCategory::name).collect(Collectors.toList());
     }
 }

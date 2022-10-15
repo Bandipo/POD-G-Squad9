@@ -4,32 +4,46 @@ import enums.ProductCategory;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.Set;
+
 
 public class Product {
 
-    private String name;
-    private int quantity;
     private ProductCategory productCategory;
-    private BigDecimal price;
-    private Set<String> brands;
+    private String productName;
+    private int quantity;
+    private BigDecimal price;;
 
-
-    public Product(String name, int quantity, ProductCategory productCategory, BigDecimal price, Set<String> brands) {
-        this.name = name;
-        this.quantity = quantity;
+    public Product(ProductCategory productCategory, String productName) {
         this.productCategory = productCategory;
+        this.productName = productName;
+    }
+
+    public Product(ProductCategory productCategory, String productName, int quantity, BigDecimal price) {
+        this.productCategory = productCategory;
+        this.productName = productName;
+        this.quantity = quantity;
         this.price = price;
-        this.brands = brands;
     }
 
 
-    public String getName() {
-        return name;
+
+
+
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getQuantity() {
@@ -40,14 +54,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public ProductCategory getCategory() {
-        return productCategory;
-    }
-
-    public void setCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
@@ -56,31 +62,29 @@ public class Product {
         this.price = price;
     }
 
-    public Set<String> getBrands() {
-        return brands;
-    }
-
-    public void setBrands(Set<String> brands) {
-        this.brands = brands;
-    }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return quantity == product.quantity && Objects.equals(name, product.name) && productCategory == product.productCategory && Objects.equals(price, product.price);
+        return productCategory == product.productCategory && Objects.equals(productName, product.productName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, quantity, productCategory, price);
+        return Objects.hash(productCategory, productName);
     }
 
-
-
-//Todo override toString method
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productCategory=" + productCategory +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
 
 
 }

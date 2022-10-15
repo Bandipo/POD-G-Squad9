@@ -21,7 +21,7 @@ public class ManagerServiceImpl implements ManagerService {
         //validate the role
 
         if(!Role.MANAGER.equals(manager.getPersonDetails().getRole())){
-            throw new NullPointerException("You must be a manager to perform this function");
+            throw new ServiceException("You must be a manager to perform this function");
         }
 
 
